@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load static %}
+{% block title %} Избранные авторы {% endblock %}
+{% block content %}
+  <h1> Последние обновления моих подписок </h1>
+  
+  {% include 'posts/includes/switcher.html' %}
+      {% for post in page_obj %}
+          {% include 'includes/post_item.html' %}
+      {% endfor %}
+      {% include 'includes/paginator.html' %}
+    </div>
+  {% endblock %}
+  
