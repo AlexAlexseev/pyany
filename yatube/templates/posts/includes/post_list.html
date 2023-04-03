@@ -1,14 +1,14 @@
 {% load thumbnail %}
 <div class="card">
   <div class="card-header">
-      Автор: {{ post.author.get_full_name }} 
-      <a href="{% url 'posts:profile' post.author %}" class="card-link">все посты пользователя</a>
+    Автор:  <a href="{% url 'posts:profile' post.author.username %} " > {% if post.author.get_full_name %} {{ post.author.get_full_name }} {% else %} {{post.author}} </a> {% endif %} 
+</a>
     <p>
       Дата публикации: {{ post.pub_date|date:"d E Y" }}
     </p>
   </div>
   <div class="card-body">
-    {% thumbnail post.image "960x339" crop="center" upscale=True as im %}
+    {% thumbnail post.image "240x339" crop="center" upscale=True as im %}
       <img class="card-img my-2" src="{{ im.url }}">
     {% endthumbnail %}
     <p>{{ post.text |truncatechars:1501 }}</p>
